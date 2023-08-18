@@ -17,6 +17,8 @@ GET_Single_User
     Log To Console    Response Header: ${response.headers} \n
 
     Status Should Be    200
+    ${responseStatus}=    Convert To String    ${response.status_code}
+    Should Be Equal    200    ${responseStatus}
 
 
 *** Keywords ***
