@@ -1,5 +1,6 @@
 *** Settings ***
 Library     RequestsLibrary
+Library     Collections
 
 
 *** Variables ***
@@ -22,6 +23,9 @@ GET_Single_User
 
     ${responseBody}=    Convert To String    ${response.content}
     Should Contain    ${responseBody}    fuchsia rose
+
+    ${responseHeadersContentType}=    Get From Dictionary    ${response.headers}    Content-Type
+    Should Contain    ${responseHeadersContentType}    application/json
 
 
 *** Keywords ***
