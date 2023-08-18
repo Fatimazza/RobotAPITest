@@ -4,7 +4,7 @@ Library     Collections
 
 
 *** Variables ***
-${base_url}     http://reqres.in/api/
+${base_url}     http://reqres.in/api
 ${user_id}      2
 
 
