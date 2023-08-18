@@ -20,6 +20,9 @@ GET_Single_User
     ${responseStatus}=    Convert To String    ${response.status_code}
     Should Be Equal    200    ${responseStatus}
 
+    ${responseBody}=    Convert To String    ${response.content}
+    Should Contain    ${responseBody}    fuchsia rose
+
 
 *** Keywords ***
 Get User
