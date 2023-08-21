@@ -7,7 +7,7 @@ Variables       ../Resources/data.py
 
 
 *** Variables ***
-${base_url}     http://reqres.in/api
+${base_url}     https://reqres.in/api
 ${user_id}      2
 
 
