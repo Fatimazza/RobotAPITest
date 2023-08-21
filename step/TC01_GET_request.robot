@@ -9,14 +9,16 @@ ${user_id}      2
 
 
 *** Test Cases ***
-GET_Single_User
+TC 01: Get single User (GET)
     Create Session    mySession    ${base_url}
     ${response}=    GET On Session    mySession    /user/${user_id}
 
+    # Logs
     Log To Console    Response Status: ${response.status_code} \n
     Log To Console    Response Body: ${response.content} \n
     Log To Console    Response Header: ${response.headers} \n
 
+    # Validation
     Status Should Be    200
     ${responseStatus}=    Convert To String    ${response.status_code}
     Should Be Equal    200    ${responseStatus}
