@@ -1,6 +1,7 @@
 *** Settings ***
 Library         RequestsLibrary
 Library         Collections
+Library         JSONLibrary
 Resource        ../Resources/resources.robot
 Variables       ../Resources/data.py
 
@@ -34,6 +35,7 @@ TC 01: Get single User (GET)
 TC 02: Get single User with POM (GET)
     Creating the session
     ${response}=    Getting user by ID
+    ${json_object}=    to json    ${response.content}
 
     # Logs
     Log To Console    Response Status: ${response.status_code} \n
@@ -48,6 +50,12 @@ TC 02: Get single User with POM (GET)
     Should Contain    ${responseBody}    ${user_default_mail}
     ${responseHeadersContentType}=    Get From Dictionary    ${response.headers}    Content-Type
     Should Contain    ${responseHeadersContentType}    application/json
+
+    # Validation Alternative
+    ${email}=    Get Value From Json    ${json_object}    data.email
+    Should Be Equal    ${email[0]}    ${user_default_mail}
+    ${last_name}=    Get Value From Json    ${json_object}    data.last_name
+    Should Be equal    ${last_name[0]}    Weaver
 
 
 *** Keywords ***
