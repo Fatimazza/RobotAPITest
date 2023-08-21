@@ -11,7 +11,7 @@ ${user_id}      2
 *** Test Cases ***
 TC 01: Get single User (GET)
     Create Session    mySession    ${base_url}
-    ${response}=    GET On Session    mySession    /user/${user_id}
+    ${response}=    Get User
 
     # Logs
     Log To Console    Response Status: ${response.status_code} \n
@@ -24,7 +24,7 @@ TC 01: Get single User (GET)
     Should Be Equal    200    ${responseStatus}
 
     ${responseBody}=    Convert To String    ${response.content}
-    Should Contain    ${responseBody}    fuchsia rose
+    Should Contain    ${responseBody}    Weaver
 
     ${responseHeadersContentType}=    Get From Dictionary    ${response.headers}    Content-Type
     Should Contain    ${responseHeadersContentType}    application/json
@@ -32,4 +32,6 @@ TC 01: Get single User (GET)
 
 *** Keywords ***
 Get User
-    GET On Session    mySession    /user/${user_id}
+    # This is only used in TC01 - TC 01
+    ${myResponse}=    GET On Session    mySession    /users/${user_id}
+    RETURN    ${myResponse}
