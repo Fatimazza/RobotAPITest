@@ -7,6 +7,9 @@ Variables       ../resources/data.py
 
 *** Test Cases ***
 TC 06: Delete a User (DELETE)
+    [Tags]    smoke
+
+    # Request
     Creating the session
     ${response}=    Deleting an user
 
