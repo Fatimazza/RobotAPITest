@@ -8,7 +8,7 @@ Variables       ../Resources/data.py
 *** Test Cases ***
 TC 03: Register a User (POST) - Success
     Creating the session
-    ${response}=    Register an user
+    ${response}=    Registering an user
     # Using POST On Session with Header Return 400, Header only can be use in POST Request (deprecated)
 
     # Logs
@@ -21,7 +21,7 @@ TC 03: Register a User (POST) - Success
 
 TC 04: Create a User (POST)
     Creating the session
-    ${response}=    Create an user
+    ${response}=    Creating an user
     # Using POST On Session with Header Return 400, Header only can be use in POST Request (deprecated)
 
     # Logs
@@ -34,13 +34,13 @@ TC 04: Create a User (POST)
 
 
 *** Keywords ***
-Register an user
+Registering an user
     ${header}=    Create Dictionary    Content-Type=application/json    Accept=application/json
     ${body}=    Create Dictionary    email=${user_new_mail}    password=${user_password}
     ${response}=    POST On Session    session    /register    data=${body}
     RETURN    ${response}
 
-Create an user
+Creating an user
     ${body}=    Create Dictionary    name=Izza    job=Lead QA Automation
     ${header}=    Create Dictionary    Content-Type=application/json
     ${response}=    POST On Session    session    /users    data=${body}
