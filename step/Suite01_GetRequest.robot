@@ -7,6 +7,12 @@ Variables       ../resources/data.py
 
 *** Test Cases ***
 TC 01: Get a User (GET)
+    [Documentation]    This test case verifies that the response code of the GET Request should be 200.
+    ...    The response body contains the 'user id' key with value as '2', the valid 'email',
+    ...    and the valid 'last name'.
+    [Tags]    smoke
+
+    # Request
     Creating the session
     ${response}=    Getting user by ID
 
