@@ -17,9 +17,7 @@ TC 01: Get single User (GET)
     ${response}=    Get User
 
     # Logs
-    Log To Console    Response Status: ${response.status_code} \n
-    Log To Console    Response Body: ${response.content} \n
-    Log To Console    Response Header: ${response.headers} \n
+    Log all responses(${response})
 
     # Validation
     Status Should Be    200
@@ -38,9 +36,7 @@ TC 02: Get single User with POM (GET)
     ${json_object}=    to json    ${response.content}
 
     # Logs
-    Log To Console    Response Status: ${response.status_code} \n
-    Log To Console    Response Body: ${response.content} \n
-    Log To Console    Response Header: ${response.headers} \n
+    Log all responses(${response})
 
     # Validation
     ${responseStatus}=    Convert To String    ${response.status_code}
@@ -63,3 +59,8 @@ Get User
     # This is only used in TC01 - TC 01
     ${myResponse}=    GET On Session    mySession    /users/${user_id}
     RETURN    ${myResponse}
+
+Log all responses(${response})
+    Log To Console    Response Status: ${response.status_code} \n
+    Log To Console    Response Body: ${response.content} \n
+    Log To Console    Response Header: ${response.headers} \n
