@@ -1,20 +1,14 @@
 *** Settings ***
-Library     RequestsLibrary
-Library     JSONLibrary
-
-
-*** Variables ***
-${base_url}     https://reqres.in/api
-${user_mail}    eve.holt@reqres.in
-${user_pass}    123456
+Library         RequestsLibrary
+Library         JSONLibrary
+Resource        ../Resources/resources.robot
+Variables       ../Resources/data.py
 
 
 *** Test Cases ***
 TC 03: Register a User (POST) - Success
-    Create Session    mySession    ${base_url}    verify=true
-    ${body}=    Create Dictionary    email=${user_mail}    password=${user_pass}
-    ${header}=    Create Dictionary    Content-Type=application/json    Accept=application/json
-    ${response}=    POST On Session    mySession    /register    data=${body}
+    Creating the session
+    ${response}=    Register an user
     ${json_object}=    To Json    ${response.content}
     # Using POST On Session with Header Return 400, Header only can be use in POST Request (deprecated)
 
@@ -30,10 +24,8 @@ TC 03: Register a User (POST) - Success
     Should Not Be Empty    ${token}
 
 TC 04: Create a User (POST)
-    Create Session    mySession    ${base_url}
-    ${body}=    Create Dictionary    name=Izza    job=Lead QA Automation
-    ${header}=    Create Dictionary    Content-Type=application/json
-    ${response}=    POST On Session    mySession    /users    data=${body}
+    Creating the session
+    ${response}=    Create an user
     # Using POST On Session with Header Return 400, Header only can be use in POST Request (deprecated)
 
     # Logs
@@ -48,7 +40,14 @@ TC 04: Create a User (POST)
 
 
 *** Keywords ***
-Log all responses(${response})
-    Log To Console    Response Status: ${response.status_code} \n
-    Log To Console    Response Body: ${response.content} \n
-    Log To Console    Response Header: ${response.headers} \n
+Register an user
+    ${header}=    Create Dictionary    Content-Type=application/json    Accept=application/json
+    ${body}=    Create Dictionary    email=${user_new_mail}    password=${user_password}
+    ${response}=    POST On Session    session    /register    data=${body}
+    RETURN    ${response}
+
+Create an user
+    ${body}=    Create Dictionary    name=Izza    job=Lead QA Automation
+    ${header}=    Create Dictionary    Content-Type=application/json
+    ${response}=    POST On Session    session    /users    data=${body}
+    RETURN    ${response}
