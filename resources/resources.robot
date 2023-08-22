@@ -21,6 +21,10 @@ Status code should be 201 Created (${response})
     ${status_code}=    Convert To String    ${response.status_code}
     Should Be Equal    ${status_code}    201
 
+Status code should be 204 No Content (${response})
+    ${status_code}=    Convert To String    ${response.status_code}
+    Should Be Equal    ${status_code}    204
+
 Response Header should contain application/json (${response})
     ${response_header}=    Get From Dictionary    ${response.headers}    Content-Type
     Should Contain    ${response_header}    application/json
