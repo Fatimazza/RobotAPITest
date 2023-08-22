@@ -12,3 +12,4 @@ user_new_mail = "eve.holt@reqres.in"
 user_password= "123456"
 user_new_password= "654321"
 user_new_job = "Lead Engineers"
+user_list = ["Michael", "Lindsay", "Tobias", "Byron", "George", "Rachel"]

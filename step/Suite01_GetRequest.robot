@@ -43,6 +43,7 @@ TC 02: Get list of Users (GET)
     Response Header should contain application/json (${response})
     Response Body should contain correct page (${response})
     Response Body should contain correct length of email (${response})
+    Response Body should contain list of users (${response})
 
 
 *** Keywords ***
@@ -80,3 +81,15 @@ Response Body should contain correct length of email (${response})
     ${response_emails}=    Get Value From Json    ${response.json()}    $..email
     ${email_count}=    Get Length    ${response_emails}
     Should Be Equal    ${user_list_length}    ${email_count}
+
+Response Body should contain list of users (${response})
+    ${response_first_names}=    Get Value From Json    ${response.json()}    $..first_name
+    # alternative - 1
+    Should Contain Any    ${response_first_names}    Michael    Lindsay    Tobias    Byron    George    Rachel
+    # alternative - 2
+    Lists Should Be Equal    ${response_first_names}    ${user_list}
+    # alternative - 3
+    FOR    ${first_names}    IN    @{response_first_names}
+        Log To Console    ${first_names} \n
+        List Should Contain Value    ${user_list}    ${first_names}
+    END
