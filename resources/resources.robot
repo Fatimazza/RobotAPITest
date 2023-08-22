@@ -7,10 +7,6 @@ Variables       ./data.py
 Creating the session
     Create session    session    ${base_url}    verify=true
 
-Getting user by ID
-    ${response}=    GET On Session    session    /users/${user_id}
-    RETURN    ${response}
-
 Log all responses(${response})
     Log To Console    Response Status: ${response.status_code} \n
     Log To Console    Response Body: ${response.content} \n

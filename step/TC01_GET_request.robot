@@ -6,15 +6,10 @@ Resource        ../Resources/resources.robot
 Variables       ../Resources/data.py
 
 
-*** Variables ***
-${base_url}     https://reqres.in/api
-${user_id}      2
-
-
 *** Test Cases ***
 TC 01: Get single User (GET)
-    Create Session    mySession    ${base_url}
-    ${response}=    Get User
+    Creating the session
+    ${response}=    Getting user by ID
 
     # Logs
     Log all responses(${response})
@@ -54,12 +49,6 @@ TC 02: Get single User with POM (GET)
 
 
 *** Keywords ***
-Get User
-    # This is only used in TC01 - TC 01
-    ${myResponse}=    GET On Session    mySession    /users/${user_id}
-    RETURN    ${myResponse}
-
-Log all responses(${response})
-    Log To Console    Response Status: ${response.status_code} \n
-    Log To Console    Response Body: ${response.content} \n
-    Log To Console    Response Header: ${response.headers} \n
+Getting user by ID
+    ${response}=    GET On Session    session    /users/${user_id}
+    RETURN    ${response}
