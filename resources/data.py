@@ -3,6 +3,8 @@ base_url="https://reqres.in/api"
 
 # USER
 user_id= "2"
+user_name = "Izza"
+user_job = "Lead QA Automation"
 user_default_mail= "janet.weaver@reqres.in"
 user_new_mail = "eve.holt@reqres.in"
 user_password= "123456"

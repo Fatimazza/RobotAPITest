@@ -41,7 +41,7 @@ Registering an user
     RETURN    ${response}
 
 Creating an user
-    ${body}=    Create Dictionary    name=Izza    job=Lead QA Automation
+    ${body}=    Create Dictionary    name=${user_name}    job=${user_job}
     ${header}=    Create Dictionary    Content-Type=application/json
     ${response}=    POST On Session    session    /users    data=${body}
     RETURN    ${response}
@@ -54,5 +54,5 @@ Response Body should contain non-empty token (${response})
 
 Response Body should contain name and job (${response})
     ${response_body}=    Convert To String    ${response.content}
-    Should Contain    ${response_body}    Izza
-    Should Contain    ${response_body}    Lead QA Automation
+    Should Contain    ${response_body}    ${user_name}
+    Should Contain    ${response_body}    ${user_job}
