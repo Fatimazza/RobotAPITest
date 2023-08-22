@@ -42,6 +42,7 @@ TC 02: Get list of Users (GET)
     Status code should be 200 Success (${response})
     Response Header should contain application/json (${response})
     Response Body should contain correct page (${response})
+    Response Body should contain correct length of email (${response})
 
 
 *** Keywords ***
@@ -74,3 +75,8 @@ Response Body should contain correct page (${response})
     ${response_page}=    Get Value From Json    ${response.json()}    page
     ${page}=    Convert To Integer    ${page_id}
     Should Be equal    ${response_page[0]}    ${page}
+
+Response Body should contain correct length of email (${response})
+    ${response_emails}=    Get Value From Json    ${response.json()}    $..email
+    ${email_count}=    Get Length    ${response_emails}
+    Should Be Equal    ${user_list_length}    ${email_count}
