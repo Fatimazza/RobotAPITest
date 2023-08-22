@@ -2,8 +2,8 @@
 Library         RequestsLibrary
 Library         Collections
 Library         JSONLibrary
-Resource        ../Resources/resources.robot
-Variables       ../Resources/data.py
+Resource        ../resources/resources.robot
+Variables       ../resources/data.py
 
 
 *** Test Cases ***
@@ -15,9 +15,7 @@ TC 01: Get single User (GET)
     Log all responses(${response})
 
     # Validation
-    Status Should Be    200
-    ${responseStatus}=    Convert To String    ${response.status_code}
-    Should Be Equal    200    ${responseStatus}
+    Status code should be 200 Success (${response})
 
     ${responseBody}=    Convert To String    ${response.content}
     Should Contain    ${responseBody}    Weaver
@@ -33,8 +31,8 @@ TC 02: Get single User with POM (GET)
     Log all responses(${response})
 
     # Validation
-    ${responseStatus}=    Convert To String    ${response.status_code}
-    Should Be Equal    200    ${responseStatus}
+    Status code should be 200 Success (${response})
+
     ${responseBody}=    Convert To String    ${response.content}
     Should Contain    ${responseBody}    ${user_id}
     Should Contain    ${responseBody}    ${user_default_mail}
