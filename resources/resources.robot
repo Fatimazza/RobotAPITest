@@ -1,5 +1,6 @@
 *** Settings ***
 Library         RequestsLibrary
+Library         Collections
 Variables       ./data.py
 
 
@@ -19,3 +20,7 @@ Status code should be 200 Success (${response})
 Status code should be 201 Created (${response})
     ${status_code}=    Convert To String    ${response.status_code}
     Should Be Equal    ${status_code}    201
+
+Response Header should contain application/json (${response})
+    ${response_header}=    Get From Dictionary    ${response.headers}    Content-Type
+    Should Contain    ${response_header}    application/json
