@@ -19,9 +19,7 @@ TC 03: Register a User (POST) - Success
     # Using POST On Session with Header Return 400, Header only can be use in POST Request (deprecated)
 
     # Logs
-    Log To Console    Response Status: ${response.status_code} \n
-    Log To Console    Response Body: ${response.content} \n
-    Log To Console    Response Header: ${response.headers} \n
+    Log all responses(${response})
 
     # Validation
     ${status_code}=    Convert To String    ${response.status_code}
@@ -39,9 +37,7 @@ TC 04: Create a User (POST)
     # Using POST On Session with Header Return 400, Header only can be use in POST Request (deprecated)
 
     # Logs
-    Log To Console    Response Status: ${response.status_code} \n
-    Log To Console    Response Body: ${response.content} \n
-    Log To Console    Response Header: ${response.headers} \n
+    Log all responses(${response})
 
     # Validations
     ${status_code}=    Convert To String    ${response.status_code}
@@ -49,3 +45,10 @@ TC 04: Create a User (POST)
     ${res_body}=    Convert To String    ${response.content}
     Should Contain    ${res_body}    Izza
     Should Contain    ${res_body}    Lead QA Automation
+
+
+*** Keywords ***
+Log all responses(${response})
+    Log To Console    Response Status: ${response.status_code} \n
+    Log To Console    Response Body: ${response.content} \n
+    Log To Console    Response Header: ${response.headers} \n
