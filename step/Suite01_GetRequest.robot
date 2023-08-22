@@ -28,10 +28,29 @@ TC 01: Get a User (GET)
     Response Body should contain default email (${response})
     Response Body should contain default last name (${response})
 
+TC 02: Get list of Users (GET)
+    [Tags]    smoke
+
+    # Request
+    Creating the session
+    ${response}=    Getting list of users by page
+
+    # Logs
+    Log all responses(${response})
+
+    # Validation
+    Status code should be 200 Success (${response})
+    Response Header should contain application/json (${response})
+    Response Body should contain correct page (${response})
+
 
 *** Keywords ***
 Getting user by ID
     ${response}=    GET On Session    session    /users/${user_id}
+    RETURN    ${response}
+
+Getting list of users by page
+    ${response}=    GET On Session    session    /users?page\=${page_id}
     RETURN    ${response}
 
 Response Body should contain user id and email (${response})
@@ -50,3 +69,8 @@ Response Body should contain default email (${response})
 Response Body should contain default last name (${response})
     ${last_name}=    Get Value From Json    ${response.json()}    data.last_name
     Should Be equal    ${last_name[0]}    Weaver
+
+Response Body should contain correct page (${response})
+    ${response_page}=    Get Value From Json    ${response.json()}    page
+    ${page}=    Convert To Integer    ${page_id}
+    Should Be equal    ${response_page[0]}    ${page}
