@@ -17,11 +17,7 @@ TC 03: Register a User (POST) - Success
     # Validation
     Status code should be 200 Success (${response})
     Response Header should contain application/json (${response})
-
-    ${response_body}=    Convert To String    ${response.content}
-    Should Contain    ${response_body}    token
-    ${token}=    Get Value From Json    ${response.json()}    token
-    Should Not Be Empty    ${token}
+    Response Body should contain non-empty token (${response})
 
 TC 04: Create a User (POST)
     Creating the session
@@ -34,10 +30,7 @@ TC 04: Create a User (POST)
     # Validations
     Status code should be 201 Created (${response})
     Response Header should contain application/json (${response})
-
-    ${res_body}=    Convert To String    ${response.content}
-    Should Contain    ${res_body}    Izza
-    Should Contain    ${res_body}    Lead QA Automation
+    Response Body should contain name and job (${response})
 
 
 *** Keywords ***
@@ -52,3 +45,14 @@ Create an user
     ${header}=    Create Dictionary    Content-Type=application/json
     ${response}=    POST On Session    session    /users    data=${body}
     RETURN    ${response}
+
+Response Body should contain non-empty token (${response})
+    ${response_body}=    Convert To String    ${response.content}
+    Should Contain    ${response_body}    token
+    ${token}=    Get Value From Json    ${response.json()}    token
+    Should Not Be Empty    ${token}
+
+Response Body should contain name and job (${response})
+    ${response_body}=    Convert To String    ${response.content}
+    Should Contain    ${response_body}    Izza
+    Should Contain    ${response_body}    Lead QA Automation
