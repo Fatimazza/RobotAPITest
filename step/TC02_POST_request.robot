@@ -1,5 +1,6 @@
 *** Settings ***
 Library     RequestsLibrary
+Library     JSONLibrary
 
 
 *** Variables ***
@@ -14,6 +15,7 @@ TC 03: Register a User (POST) - Success
     ${body}=    Create Dictionary    email=${user_mail}    password=${user_pass}
     ${header}=    Create Dictionary    Content-Type=application/json    Accept=application/json
     ${response}=    POST On Session    mySession    /register    data=${body}
+    ${json_object}=    To Json    ${response.content}
     # Using POST On Session with Header Return 400, Header only can be use in POST Request (deprecated)
 
     # Logs
@@ -26,6 +28,8 @@ TC 03: Register a User (POST) - Success
     Should Be Equal    ${status_code}    200
     ${response_body}=    Convert To String    ${response.content}
     Should Contain    ${response_body}    token
+    ${token}=    Get Value From Json    ${json_object}    token
+    Should Not Be Empty    ${token}
 
 TC 04: Create a User (POST)
     Create Session    mySession    ${base_url}
