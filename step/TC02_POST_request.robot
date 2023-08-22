@@ -15,8 +15,7 @@ TC 03: Register a User (POST) - Success
     Log all responses(${response})
 
     # Validation
-    ${status_code}=    Convert To String    ${response.status_code}
-    Should Be Equal    ${status_code}    200
+    Status code should be 200 Success (${response})
     ${response_body}=    Convert To String    ${response.content}
     Should Contain    ${response_body}    token
     ${token}=    Get Value From Json    ${response.json()}    token
@@ -31,8 +30,7 @@ TC 04: Create a User (POST)
     Log all responses(${response})
 
     # Validations
-    ${status_code}=    Convert To String    ${response.status_code}
-    Should Be Equal    ${status_code}    201
+    Status code should be 201 Created (${response})
     ${res_body}=    Convert To String    ${response.content}
     Should Contain    ${res_body}    Izza
     Should Contain    ${res_body}    Lead QA Automation

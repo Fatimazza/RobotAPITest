@@ -13,5 +13,9 @@ Log all responses(${response})
     Log To Console    Response Header: ${response.headers} \n
 
 Status code should be 200 Success (${response})
-    ${responseStatus}=    Convert To String    ${response.status_code}
-    Should Be Equal    200    ${responseStatus}
+    ${status_code}=    Convert To String    ${response.status_code}
+    Should Be Equal    200    ${status_code}
+
+Status code should be 201 Created (${response})
+    ${status_code}=    Convert To String    ${response.status_code}
+    Should Be Equal    ${status_code}    201
