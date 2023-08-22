@@ -33,7 +33,6 @@ TC 01: Get single User (GET)
 TC 02: Get single User with POM (GET)
     Creating the session
     ${response}=    Getting user by ID
-    ${json_object}=    to json    ${response.content}
 
     # Logs
     Log all responses(${response})
@@ -48,9 +47,9 @@ TC 02: Get single User with POM (GET)
     Should Contain    ${responseHeadersContentType}    application/json
 
     # Validation Alternative
-    ${email}=    Get Value From Json    ${json_object}    data.email
+    ${email}=    Get Value From Json    ${response.json()}    data.email
     Should Be Equal    ${email[0]}    ${user_default_mail}
-    ${last_name}=    Get Value From Json    ${json_object}    data.last_name
+    ${last_name}=    Get Value From Json    ${response.json()}    data.last_name
     Should Be equal    ${last_name[0]}    Weaver
 
 
