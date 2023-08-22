@@ -7,6 +7,9 @@ Variables       ../resources/data.py
 
 *** Test Cases ***
 TC 05: Register a User (PUT)
+    [Tags]    smoke
+
+    # Request
     Creating the session
     ${response}=    Updating user job
 
