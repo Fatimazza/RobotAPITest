@@ -1,114 +1,938 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.11.1 on darwin)" generated="20230818 12:43:20.376" rpa="false" schemaversion="3">
+<robot generator="Robot 6.0.2 (Python 3.11.1 on darwin)" generated="20230822 14:08:46.328" rpa="false" schemaversion="3">
 <suite id="s1" name="RobotAPITest" source="/Users/fatimazza/Belajar/QualityAssurance/RobotAPITest">
 <suite id="s1-s1" name="Step" source="/Users/fatimazza/Belajar/QualityAssurance/RobotAPITest/step">
-<suite id="s1-s1-s1" name="TC01 GET request" source="/Users/fatimazza/Belajar/QualityAssurance/RobotAPITest/step/TC01_GET_request.robot">
-<test id="s1-s1-s1-t1" name="GET_Single_User" line="12">
+<suite id="s1-s1-s1" name="Suite01 GetRequest" source="/Users/fatimazza/Belajar/QualityAssurance/RobotAPITest/step/Suite01_GetRequest.robot">
+<test id="s1-s1-s1-t1" name="TC 01: Get a User (GET)" line="9">
+<kw name="Creating the session" library="resources">
 <kw name="Create Session" library="RequestsLibrary">
-<arg>mySession</arg>
+<arg>session</arg>
 <arg>${base_url}</arg>
+<arg>verify=true</arg>
 <doc>Create Session: create a HTTP session to a server</doc>
-<msg timestamp="20230818 12:43:20.567" level="INFO">Creating Session using : alias=mySession, url=http://reqres.in/api/, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
-<status status="PASS" starttime="20230818 12:43:20.566" endtime="20230818 12:43:20.567"/>
+<msg timestamp="20230822 14:08:46.685" level="INFO">Creating Session using : alias=session, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230822 14:08:46.685" endtime="20230822 14:08:46.686"/>
 </kw>
+<status status="PASS" starttime="20230822 14:08:46.685" endtime="20230822 14:08:46.686"/>
+</kw>
+<kw name="Getting user by ID">
+<var>${response}</var>
 <kw name="GET On Session" library="RequestsLibrary">
 <var>${response}</var>
-<arg>mySession</arg>
-<arg>/user/${user_id}</arg>
+<arg>session</arg>
+<arg>/users/${user_id}</arg>
 <doc>Sends a GET request on a previously created HTTP Session.</doc>
-<msg timestamp="20230818 12:43:20.874" level="INFO">GET Request : url=http://reqres.in/api/user/2 (redirected) 
- path_url=/api/user/2 
+<msg timestamp="20230822 14:08:47.667" level="INFO">GET Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
  headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
  body=None 
  </msg>
-<msg timestamp="20230818 12:43:20.875" level="INFO">GET Response : url=https://reqres.in/api/user/2 
+<msg timestamp="20230822 14:08:47.667" level="INFO">GET Response : url=https://reqres.in/api/users/2 
  status=200, reason=OK 
- headers={'Date': 'Fri, 18 Aug 2023 05:43:20 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"e8-ov4wWh4/OY1IMQMqWgskYtOFnVs"', 'Via': '1.1 vegur', 'Cache-Control': 'max-age=14400', 'CF-Cache-Status': 'HIT', 'Age': '284', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=oztz3BHYywtrKaUpL86w%2FbpYI0ixOC0G9awR5inZQ8JPptFmghnpfDXQgGovngFgCrbGhPw%2FAnUhO7zwo%2Bndm0DNisyfaPeuAQclF%2Fbvf8iDac2zebL%2BsnHXeQ%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '7f87d6b39c953fda-SIN', 'Content-Encoding': 'gzip'} 
- body={"data":{"id":2,"name":"fuchsia rose","year":2001,"color":"#C74375","pantone_value":"17-2031"},"support":{"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}} 
+ headers={'Date': 'Tue, 22 Aug 2023 07:08:49 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"118-pbdwwFo9SKNhD3Lx5iHJyngpq00"', 'Via': '1.1 vegur', 'Cache-Control': 'max-age=14400', 'CF-Cache-Status': 'HIT', 'Age': '4291', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=Vlm8tfmC3YHpg5kcc2tqVqDHDtp%2FHmfzjIq63hwIn7QGq5dTxrJbWG5lsyDJNb1ogmHUc8vwxcp0Dcp4yDzXQmuyafb4PqKQO8o3krscw5AjhVNzlASB%2BVYC5Q%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '7fa9496729063e53-SIN', 'Content-Encoding': 'gzip'} 
+ body={"data":{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver","avatar":"https://reqres.in/img/faces/2-image.jpg"},"support":{"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}} 
  </msg>
-<msg timestamp="20230818 12:43:20.875" level="INFO">/Users/fatimazza/.pyenv/versions/3.11.1/lib/python3.11/site-packages/urllib3/connectionpool.py:1045: InsecureRequestWarning: Unverified HTTPS request is being made to host 'reqres.in'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
-  warnings.warn(</msg>
-<msg timestamp="20230818 12:43:20.875" level="INFO">${response} = &lt;Response [200]&gt;</msg>
-<status status="PASS" starttime="20230818 12:43:20.567" endtime="20230818 12:43:20.875"/>
+<msg timestamp="20230822 14:08:47.668" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230822 14:08:46.686" endtime="20230822 14:08:47.668"/>
 </kw>
+<return>
+<value>${response}</value>
+<status status="PASS" starttime="20230822 14:08:47.668" endtime="20230822 14:08:47.668"/>
+</return>
+<msg timestamp="20230822 14:08:47.668" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230822 14:08:46.686" endtime="20230822 14:08:47.668"/>
+</kw>
+<kw name="Log all responses(${response})" library="resources" sourcename="Log all responses(${response})">
 <kw name="Log To Console" library="BuiltIn">
 <arg>Response Status: ${response.status_code} \n</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230818 12:43:20.875" endtime="20230818 12:43:20.876"/>
+<status status="PASS" starttime="20230822 14:08:47.669" endtime="20230822 14:08:47.670"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Response Body: ${response.content} \n</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230818 12:43:20.876" endtime="20230818 12:43:20.877"/>
+<status status="PASS" starttime="20230822 14:08:47.670" endtime="20230822 14:08:47.671"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>Response Header: ${response.headers} \n</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230818 12:43:20.877" endtime="20230818 12:43:20.878"/>
+<status status="PASS" starttime="20230822 14:08:47.671" endtime="20230822 14:08:47.672"/>
 </kw>
-<kw name="Status Should Be" library="RequestsLibrary">
-<arg>200</arg>
-<doc>Fails if response status code is different than the expected.</doc>
-<status status="PASS" starttime="20230818 12:43:20.878" endtime="20230818 12:43:20.878"/>
+<status status="PASS" starttime="20230822 14:08:47.669" endtime="20230822 14:08:47.672"/>
 </kw>
+<kw name="Status code should be 200 Success (${response})" library="resources" sourcename="Status code should be 200 Success (${response})">
 <kw name="Convert To String" library="BuiltIn">
-<var>${responseStatus}</var>
+<var>${status_code}</var>
 <arg>${response.status_code}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20230818 12:43:20.879" level="INFO">${responseStatus} = 200</msg>
-<status status="PASS" starttime="20230818 12:43:20.879" endtime="20230818 12:43:20.879"/>
+<msg timestamp="20230822 14:08:47.673" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20230822 14:08:47.673" endtime="20230822 14:08:47.673"/>
 </kw>
 <kw name="Should Be Equal" library="BuiltIn">
 <arg>200</arg>
-<arg>${responseStatus}</arg>
+<arg>${status_code}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" starttime="20230818 12:43:20.879" endtime="20230818 12:43:20.880"/>
+<status status="PASS" starttime="20230822 14:08:47.673" endtime="20230822 14:08:47.674"/>
 </kw>
+<status status="PASS" starttime="20230822 14:08:47.672" endtime="20230822 14:08:47.674"/>
+</kw>
+<kw name="Response Header should contain application/json (${response})" library="resources" sourcename="Response Header should contain application/json (${response})">
+<kw name="Get From Dictionary" library="Collections">
+<var>${response_header}</var>
+<arg>${response.headers}</arg>
+<arg>Content-Type</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230822 14:08:47.675" level="INFO">${response_header} = application/json; charset=utf-8</msg>
+<status status="PASS" starttime="20230822 14:08:47.674" endtime="20230822 14:08:47.675"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response_header}</arg>
+<arg>application/json</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230822 14:08:47.675" endtime="20230822 14:08:47.676"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:47.674" endtime="20230822 14:08:47.676"/>
+</kw>
+<kw name="Response Body should contain user id and email (${response})" sourcename="Response Body should contain user id and email (${response})">
 <kw name="Convert To String" library="BuiltIn">
 <var>${responseBody}</var>
 <arg>${response.content}</arg>
 <doc>Converts the given item to a Unicode string.</doc>
-<msg timestamp="20230818 12:43:20.880" level="INFO">${responseBody} = {"data":{"id":2,"name":"fuchsia rose","year":2001,"color":"#C74375","pantone_value":"17-2031"},"support":{"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards ...</msg>
-<status status="PASS" starttime="20230818 12:43:20.880" endtime="20230818 12:43:20.880"/>
+<msg timestamp="20230822 14:08:47.677" level="INFO">${responseBody} = {"data":{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver","avatar":"https://reqres.in/img/faces/2-image.jpg"},"support":{"url":"https://reqres.in/#support-heading","te...</msg>
+<status status="PASS" starttime="20230822 14:08:47.676" endtime="20230822 14:08:47.678"/>
 </kw>
 <kw name="Should Contain" library="BuiltIn">
 <arg>${responseBody}</arg>
-<arg>fuchsia rose</arg>
+<arg>${user_id}</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" starttime="20230818 12:43:20.881" endtime="20230818 12:43:20.881"/>
+<status status="PASS" starttime="20230822 14:08:47.678" endtime="20230822 14:08:47.678"/>
 </kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${responseBody}</arg>
+<arg>${user_default_mail}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230822 14:08:47.678" endtime="20230822 14:08:47.678"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:47.676" endtime="20230822 14:08:47.678"/>
+</kw>
+<kw name="Response Body should contain last name (${response})" sourcename="Response Body should contain last name (${response})">
+<kw name="Convert To String" library="BuiltIn">
+<var>${responseBody}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230822 14:08:47.680" level="INFO">${responseBody} = {"data":{"id":2,"email":"janet.weaver@reqres.in","first_name":"Janet","last_name":"Weaver","avatar":"https://reqres.in/img/faces/2-image.jpg"},"support":{"url":"https://reqres.in/#support-heading","te...</msg>
+<status status="PASS" starttime="20230822 14:08:47.679" endtime="20230822 14:08:47.680"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${responseBody}</arg>
+<arg>Weaver</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230822 14:08:47.680" endtime="20230822 14:08:47.680"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:47.679" endtime="20230822 14:08:47.680"/>
+</kw>
+<kw name="Response Body should contain default email (${response})" sourcename="Response Body should contain default email (${response})">
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${email}</var>
+<arg>${response.json()}</arg>
+<arg>data.email</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20230822 14:08:47.718" level="INFO">${email} = ['janet.weaver@reqres.in']</msg>
+<status status="PASS" starttime="20230822 14:08:47.681" endtime="20230822 14:08:47.718"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${email[0]}</arg>
+<arg>${user_default_mail}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230822 14:08:47.719" endtime="20230822 14:08:47.719"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:47.680" endtime="20230822 14:08:47.720"/>
+</kw>
+<kw name="Response Body should contain default last name (${response})" sourcename="Response Body should contain default last name (${response})">
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${last_name}</var>
+<arg>${response.json()}</arg>
+<arg>data.last_name</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20230822 14:08:47.746" level="INFO">${last_name} = ['Weaver']</msg>
+<status status="PASS" starttime="20230822 14:08:47.720" endtime="20230822 14:08:47.747"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${last_name[0]}</arg>
+<arg>Weaver</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230822 14:08:47.747" endtime="20230822 14:08:47.748"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:47.720" endtime="20230822 14:08:47.748"/>
+</kw>
+<doc>This test case verifies that the response code of the GET Request should be 200.
+The response body contains the 'user id' key with value as '2', the valid 'email',
+and the valid 'last name'.</doc>
+<tag>smoke</tag>
+<status status="PASS" starttime="20230822 14:08:46.684" endtime="20230822 14:08:47.748"/>
+</test>
+<test id="s1-s1-s1-t2" name="TC 02: Get list of Users (GET)" line="31">
+<kw name="Creating the session" library="resources">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${base_url}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230822 14:08:47.749" level="INFO">Creating Session using : alias=session, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230822 14:08:47.749" endtime="20230822 14:08:47.750"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:47.749" endtime="20230822 14:08:47.750"/>
+</kw>
+<kw name="Getting list of users by page">
+<var>${response}</var>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>session</arg>
+<arg>/users?page\=${page_id}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20230822 14:08:47.902" level="INFO">GET Request : url=https://reqres.in/api/users?page=2 
+ path_url=/api/users?page=2 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20230822 14:08:47.902" level="INFO">GET Response : url=https://reqres.in/api/users?page=2 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 22 Aug 2023 07:08:49 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"406-ut0vzoCuidvyMf8arZpMpJ6ZRDw"', 'Via': '1.1 vegur', 'Cache-Control': 'max-age=14400', 'CF-Cache-Status': 'HIT', 'Age': '853', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=DW5W9s34tC3%2FGm%2BPdBeZ%2B%2FHN9OzhZw7Sn4PON%2BIah6aebCUIppYUZ%2FOztsJEJ1ht3JS%2Fbn9XpmCDqjn7PO1MZaL3LbvPiWSEbXvZ7oh7RCpsyi75srFOIp%2BaPA%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '7fa949689c6b4056-SIN', 'Content-Encoding': 'gzip'} 
+ body={"page":2,"per_page":6,"total":12,"total_pages":2,"data":[{"id":7,"email":"michael.lawson@reqres.in","first_name":"Michael","last_name":"Lawson","avatar":"https://reqres.in/img/faces/7-image.jpg"},{"id":8,"email":"lindsay.ferguson@reqres.in","first_name":"Lindsay","last_name":"Ferguson","avatar":"https://reqres.in/img/faces/8-image.jpg"},{"id":9,"email":"tobias.funke@reqres.in","first_name":"Tobias","last_name":"Funke","avatar":"https://reqres.in/img/faces/9-image.jpg"},{"id":10,"email":"byron.fields@reqres.in","first_name":"Byron","last_name":"Fields","avatar":"https://reqres.in/img/faces/10-image.jpg"},{"id":11,"email":"george.edwards@reqres.in","first_name":"George","last_name":"Edwards","avatar":"https://reqres.in/img/faces/11-image.jpg"},{"id":12,"email":"rachel.howell@reqres.in","first_name":"Rachel","last_name":"Howell","avatar":"https://reqres.in/img/faces/12-image.jpg"}],"support":{"url":"https://reqres.in/#support-heading","text":"To keep ReqRes free, contributions towards server costs are appreciated!"}} 
+ </msg>
+<msg timestamp="20230822 14:08:47.902" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230822 14:08:47.750" endtime="20230822 14:08:47.902"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" starttime="20230822 14:08:47.902" endtime="20230822 14:08:47.902"/>
+</return>
+<msg timestamp="20230822 14:08:47.902" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230822 14:08:47.750" endtime="20230822 14:08:47.902"/>
+</kw>
+<kw name="Log all responses(${response})" library="resources" sourcename="Log all responses(${response})">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response Status: ${response.status_code} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:47.903" endtime="20230822 14:08:47.904"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response Body: ${response.content} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:47.904" endtime="20230822 14:08:47.905"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response Header: ${response.headers} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:47.905" endtime="20230822 14:08:47.906"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:47.903" endtime="20230822 14:08:47.906"/>
+</kw>
+<kw name="Status code should be 200 Success (${response})" library="resources" sourcename="Status code should be 200 Success (${response})">
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230822 14:08:47.907" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20230822 14:08:47.907" endtime="20230822 14:08:47.907"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>200</arg>
+<arg>${status_code}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230822 14:08:47.907" endtime="20230822 14:08:47.908"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:47.906" endtime="20230822 14:08:47.908"/>
+</kw>
+<kw name="Response Header should contain application/json (${response})" library="resources" sourcename="Response Header should contain application/json (${response})">
 <kw name="Get From Dictionary" library="Collections">
-<var>${responseHeadersContentType}</var>
+<var>${response_header}</var>
 <arg>${response.headers}</arg>
 <arg>Content-Type</arg>
 <doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
-<msg timestamp="20230818 12:43:20.883" level="INFO">${responseHeadersContentType} = application/json; charset=utf-8</msg>
-<status status="PASS" starttime="20230818 12:43:20.882" endtime="20230818 12:43:20.883"/>
+<msg timestamp="20230822 14:08:47.909" level="INFO">${response_header} = application/json; charset=utf-8</msg>
+<status status="PASS" starttime="20230822 14:08:47.908" endtime="20230822 14:08:47.909"/>
 </kw>
 <kw name="Should Contain" library="BuiltIn">
-<arg>${responseHeadersContentType}</arg>
+<arg>${response_header}</arg>
 <arg>application/json</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="PASS" starttime="20230818 12:43:20.883" endtime="20230818 12:43:20.883"/>
+<status status="PASS" starttime="20230822 14:08:47.910" endtime="20230822 14:08:47.910"/>
 </kw>
-<status status="PASS" starttime="20230818 12:43:20.566" endtime="20230818 12:43:20.883"/>
+<status status="PASS" starttime="20230822 14:08:47.908" endtime="20230822 14:08:47.910"/>
+</kw>
+<kw name="Response Body should contain correct page (${response})" sourcename="Response Body should contain correct page (${response})">
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${response_page}</var>
+<arg>${response.json()}</arg>
+<arg>page</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20230822 14:08:47.939" level="INFO">${response_page} = [2]</msg>
+<status status="PASS" starttime="20230822 14:08:47.911" endtime="20230822 14:08:47.939"/>
+</kw>
+<kw name="Convert To Integer" library="BuiltIn">
+<var>${page}</var>
+<arg>${page_id}</arg>
+<doc>Converts the given item to an integer number.</doc>
+<msg timestamp="20230822 14:08:47.940" level="INFO">${page} = 2</msg>
+<status status="PASS" starttime="20230822 14:08:47.939" endtime="20230822 14:08:47.940"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${response_page[0]}</arg>
+<arg>${page}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230822 14:08:47.940" endtime="20230822 14:08:47.941"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:47.910" endtime="20230822 14:08:47.941"/>
+</kw>
+<kw name="Response Body should contain correct length of email (${response})" sourcename="Response Body should contain correct length of email (${response})">
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${response_emails}</var>
+<arg>${response.json()}</arg>
+<arg>$..email</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20230822 14:08:47.970" level="INFO">${response_emails} = ['michael.lawson@reqres.in', 'lindsay.ferguson@reqres.in', 'tobias.funke@reqres.in', 'byron.fields@reqres.in', 'george.edwards@reqres.in', 'rachel.howell@reqres.in']</msg>
+<status status="PASS" starttime="20230822 14:08:47.941" endtime="20230822 14:08:47.970"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${email_count}</var>
+<arg>${response_emails}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20230822 14:08:47.970" level="INFO">Length is 6</msg>
+<msg timestamp="20230822 14:08:47.970" level="INFO">${email_count} = 6</msg>
+<status status="PASS" starttime="20230822 14:08:47.970" endtime="20230822 14:08:47.971"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${user_list_length}</arg>
+<arg>${email_count}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230822 14:08:47.971" endtime="20230822 14:08:47.971"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:47.941" endtime="20230822 14:08:47.971"/>
+</kw>
+<kw name="Response Body should contain list of users (${response})" sourcename="Response Body should contain list of users (${response})">
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${response_first_names}</var>
+<arg>${response.json()}</arg>
+<arg>$..first_name</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20230822 14:08:48.015" level="INFO">${response_first_names} = ['Michael', 'Lindsay', 'Tobias', 'Byron', 'George', 'Rachel']</msg>
+<status status="PASS" starttime="20230822 14:08:47.972" endtime="20230822 14:08:48.015"/>
+</kw>
+<kw name="Should Contain Any" library="BuiltIn">
+<arg>${response_first_names}</arg>
+<arg>Michael</arg>
+<arg>Lindsay</arg>
+<arg>Tobias</arg>
+<arg>Byron</arg>
+<arg>George</arg>
+<arg>Rachel</arg>
+<doc>Fails if ``container`` does not contain any of the ``*items``.</doc>
+<status status="PASS" starttime="20230822 14:08:48.015" endtime="20230822 14:08:48.015"/>
+</kw>
+<kw name="Lists Should Be Equal" library="Collections">
+<arg>${response_first_names}</arg>
+<arg>${user_list}</arg>
+<doc>Fails if given lists are unequal.</doc>
+<status status="PASS" starttime="20230822 14:08:48.015" endtime="20230822 14:08:48.016"/>
+</kw>
+<for flavor="IN">
+<var>${first_names}</var>
+<value>@{response_first_names}</value>
+<iter>
+<var name="${first_names}">Michael</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${first_names} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:48.016" endtime="20230822 14:08:48.016"/>
+</kw>
+<kw name="List Should Contain Value" library="Collections">
+<arg>${user_list}</arg>
+<arg>${first_names}</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="PASS" starttime="20230822 14:08:48.016" endtime="20230822 14:08:48.017"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:48.016" endtime="20230822 14:08:48.017"/>
+</iter>
+<iter>
+<var name="${first_names}">Lindsay</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${first_names} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:48.017" endtime="20230822 14:08:48.017"/>
+</kw>
+<kw name="List Should Contain Value" library="Collections">
+<arg>${user_list}</arg>
+<arg>${first_names}</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="PASS" starttime="20230822 14:08:48.017" endtime="20230822 14:08:48.018"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:48.017" endtime="20230822 14:08:48.018"/>
+</iter>
+<iter>
+<var name="${first_names}">Tobias</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${first_names} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:48.018" endtime="20230822 14:08:48.018"/>
+</kw>
+<kw name="List Should Contain Value" library="Collections">
+<arg>${user_list}</arg>
+<arg>${first_names}</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="PASS" starttime="20230822 14:08:48.018" endtime="20230822 14:08:48.019"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:48.018" endtime="20230822 14:08:48.019"/>
+</iter>
+<iter>
+<var name="${first_names}">Byron</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${first_names} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:48.019" endtime="20230822 14:08:48.020"/>
+</kw>
+<kw name="List Should Contain Value" library="Collections">
+<arg>${user_list}</arg>
+<arg>${first_names}</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="PASS" starttime="20230822 14:08:48.020" endtime="20230822 14:08:48.020"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:48.019" endtime="20230822 14:08:48.020"/>
+</iter>
+<iter>
+<var name="${first_names}">George</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${first_names} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:48.020" endtime="20230822 14:08:48.021"/>
+</kw>
+<kw name="List Should Contain Value" library="Collections">
+<arg>${user_list}</arg>
+<arg>${first_names}</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="PASS" starttime="20230822 14:08:48.021" endtime="20230822 14:08:48.021"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:48.020" endtime="20230822 14:08:48.021"/>
+</iter>
+<iter>
+<var name="${first_names}">Rachel</var>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${first_names} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:48.021" endtime="20230822 14:08:48.021"/>
+</kw>
+<kw name="List Should Contain Value" library="Collections">
+<arg>${user_list}</arg>
+<arg>${first_names}</arg>
+<doc>Fails if the ``value`` is not found from ``list``.</doc>
+<status status="PASS" starttime="20230822 14:08:48.021" endtime="20230822 14:08:48.022"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:48.021" endtime="20230822 14:08:48.022"/>
+</iter>
+<status status="PASS" starttime="20230822 14:08:48.016" endtime="20230822 14:08:48.022"/>
+</for>
+<status status="PASS" starttime="20230822 14:08:47.971" endtime="20230822 14:08:48.022"/>
+</kw>
+<tag>smoke</tag>
+<status status="PASS" starttime="20230822 14:08:47.748" endtime="20230822 14:08:48.022"/>
 </test>
-<status status="PASS" starttime="20230818 12:43:20.410" endtime="20230818 12:43:20.884"/>
+<status status="PASS" starttime="20230822 14:08:46.360" endtime="20230822 14:08:48.023"/>
 </suite>
-<status status="PASS" starttime="20230818 12:43:20.408" endtime="20230818 12:43:20.885"/>
+<suite id="s1-s1-s2" name="Suite02 PostRequest" source="/Users/fatimazza/Belajar/QualityAssurance/RobotAPITest/step/Suite02_PostRequest.robot">
+<test id="s1-s1-s2-t1" name="TC 03: Register a User (POST) - Success" line="9">
+<kw name="Creating the session" library="resources">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${base_url}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230822 14:08:48.031" level="INFO">Creating Session using : alias=session, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230822 14:08:48.031" endtime="20230822 14:08:48.032"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:48.029" endtime="20230822 14:08:48.032"/>
+</kw>
+<kw name="Registering an user">
+<var>${response}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<arg>Accept=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230822 14:08:48.035" level="INFO">${header} = {'Content-Type': 'application/json', 'Accept': 'application/json'}</msg>
+<status status="PASS" starttime="20230822 14:08:48.035" endtime="20230822 14:08:48.035"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>email=${user_new_mail}</arg>
+<arg>password=${user_password}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230822 14:08:48.036" level="INFO">${body} = {'email': 'eve.holt@reqres.in', 'password': '123456'}</msg>
+<status status="PASS" starttime="20230822 14:08:48.036" endtime="20230822 14:08:48.036"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>session</arg>
+<arg>/register</arg>
+<arg>data=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230822 14:08:48.529" level="INFO">POST Request : url=https://reqres.in/api/register 
+ path_url=/api/register 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '42', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=email=eve.holt%40reqres.in&amp;password=123456 
+ </msg>
+<msg timestamp="20230822 14:08:48.529" level="INFO">POST Response : url=https://reqres.in/api/register 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 22 Aug 2023 07:08:50 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '36', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"24-4iP0za1geN2he+ohu8F0FhCjLks"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=DGTH5IJyiS2eUWisT0tIjuyPWV%2BEevxfSn8cSODR%2B%2BKTwX5M8ZIr371k9UJeJUgOetWNSbMrdIX7Rv7JTj1mZ7OvgjxWKF%2BwHbZB%2BcQrqaZE8ch0NU9teQA1XQ%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '7fa9496a3b0f494b-SIN'} 
+ body={"id":4,"token":"QpwL5tke4Pnpja7X4"} 
+ </msg>
+<msg timestamp="20230822 14:08:48.529" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230822 14:08:48.036" endtime="20230822 14:08:48.529"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" starttime="20230822 14:08:48.529" endtime="20230822 14:08:48.529"/>
+</return>
+<msg timestamp="20230822 14:08:48.530" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230822 14:08:48.032" endtime="20230822 14:08:48.530"/>
+</kw>
+<kw name="Log all responses(${response})" library="resources" sourcename="Log all responses(${response})">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response Status: ${response.status_code} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:48.530" endtime="20230822 14:08:48.531"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response Body: ${response.content} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:48.531" endtime="20230822 14:08:48.532"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response Header: ${response.headers} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:48.532" endtime="20230822 14:08:48.533"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:48.530" endtime="20230822 14:08:48.533"/>
+</kw>
+<kw name="Status code should be 200 Success (${response})" library="resources" sourcename="Status code should be 200 Success (${response})">
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230822 14:08:48.534" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20230822 14:08:48.534" endtime="20230822 14:08:48.534"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>200</arg>
+<arg>${status_code}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230822 14:08:48.535" endtime="20230822 14:08:48.535"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:48.533" endtime="20230822 14:08:48.535"/>
+</kw>
+<kw name="Response Header should contain application/json (${response})" library="resources" sourcename="Response Header should contain application/json (${response})">
+<kw name="Get From Dictionary" library="Collections">
+<var>${response_header}</var>
+<arg>${response.headers}</arg>
+<arg>Content-Type</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230822 14:08:48.536" level="INFO">${response_header} = application/json; charset=utf-8</msg>
+<status status="PASS" starttime="20230822 14:08:48.535" endtime="20230822 14:08:48.536"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response_header}</arg>
+<arg>application/json</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230822 14:08:48.537" endtime="20230822 14:08:48.537"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:48.535" endtime="20230822 14:08:48.537"/>
+</kw>
+<kw name="Response Body should contain non-empty token (${response})" sourcename="Response Body should contain non-empty token (${response})">
+<kw name="Convert To String" library="BuiltIn">
+<var>${response_body}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230822 14:08:48.538" level="INFO">${response_body} = {"id":4,"token":"QpwL5tke4Pnpja7X4"}</msg>
+<status status="PASS" starttime="20230822 14:08:48.538" endtime="20230822 14:08:48.538"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response_body}</arg>
+<arg>token</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230822 14:08:48.539" endtime="20230822 14:08:48.539"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${token}</var>
+<arg>${response.json()}</arg>
+<arg>token</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20230822 14:08:48.569" level="INFO">${token} = ['QpwL5tke4Pnpja7X4']</msg>
+<status status="PASS" starttime="20230822 14:08:48.539" endtime="20230822 14:08:48.569"/>
+</kw>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<arg>${token}</arg>
+<doc>Verifies that the given item is not empty.</doc>
+<msg timestamp="20230822 14:08:48.569" level="INFO">Length is 1</msg>
+<status status="PASS" starttime="20230822 14:08:48.569" endtime="20230822 14:08:48.569"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:48.537" endtime="20230822 14:08:48.569"/>
+</kw>
+<tag>smoke</tag>
+<status status="PASS" starttime="20230822 14:08:48.029" endtime="20230822 14:08:48.570"/>
+</test>
+<test id="s1-s1-s2-t2" name="TC 04: Create a User (POST)" line="25">
+<kw name="Creating the session" library="resources">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${base_url}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230822 14:08:48.571" level="INFO">Creating Session using : alias=session, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230822 14:08:48.571" endtime="20230822 14:08:48.571"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:48.570" endtime="20230822 14:08:48.571"/>
+</kw>
+<kw name="Creating an user">
+<var>${response}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>name=${user_name}</arg>
+<arg>job=${user_job}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230822 14:08:48.572" level="INFO">${body} = {'name': 'Izza', 'job': 'Lead QA Automation'}</msg>
+<status status="PASS" starttime="20230822 14:08:48.572" endtime="20230822 14:08:48.572"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230822 14:08:48.572" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230822 14:08:48.572" endtime="20230822 14:08:48.573"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>session</arg>
+<arg>/users</arg>
+<arg>data=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20230822 14:08:49.099" level="INFO">POST Request : url=https://reqres.in/api/users 
+ path_url=/api/users 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '32', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=name=Izza&amp;job=Lead+QA+Automation 
+ </msg>
+<msg timestamp="20230822 14:08:49.099" level="INFO">POST Response : url=https://reqres.in/api/users 
+ status=201, reason=Created 
+ headers={'Date': 'Tue, 22 Aug 2023 07:08:50 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '91', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"5b-wwHF7AavZHtJrNfot08jOQHph10"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=whmn%2BZ%2B7Apx406iUfWxh71L%2B1%2FVUuMNxrqI5NrAtG%2FNePY1%2Ft2Rg0t2SoGLO799I9bQgn43hb9TWBM4WxGN5ME%2B2ySBd3OpSNoX7r7w5I8zTi3X5PFsClP%2BpCg%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '7fa9496dbd5f9fda-SIN'} 
+ body={"name":"Izza","job":"Lead QA Automation","id":"64","createdAt":"2023-08-22T07:08:50.463Z"} 
+ </msg>
+<msg timestamp="20230822 14:08:49.099" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20230822 14:08:48.573" endtime="20230822 14:08:49.099"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" starttime="20230822 14:08:49.099" endtime="20230822 14:08:49.099"/>
+</return>
+<msg timestamp="20230822 14:08:49.099" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20230822 14:08:48.571" endtime="20230822 14:08:49.100"/>
+</kw>
+<kw name="Log all responses(${response})" library="resources" sourcename="Log all responses(${response})">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response Status: ${response.status_code} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:49.100" endtime="20230822 14:08:49.101"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response Body: ${response.content} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:49.101" endtime="20230822 14:08:49.102"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response Header: ${response.headers} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:49.102" endtime="20230822 14:08:49.103"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:49.100" endtime="20230822 14:08:49.103"/>
+</kw>
+<kw name="Status code should be 201 Created (${response})" library="resources" sourcename="Status code should be 201 Created (${response})">
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230822 14:08:49.104" level="INFO">${status_code} = 201</msg>
+<status status="PASS" starttime="20230822 14:08:49.103" endtime="20230822 14:08:49.104"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>201</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230822 14:08:49.104" endtime="20230822 14:08:49.104"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:49.103" endtime="20230822 14:08:49.104"/>
+</kw>
+<kw name="Response Header should contain application/json (${response})" library="resources" sourcename="Response Header should contain application/json (${response})">
+<kw name="Get From Dictionary" library="Collections">
+<var>${response_header}</var>
+<arg>${response.headers}</arg>
+<arg>Content-Type</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<msg timestamp="20230822 14:08:49.106" level="INFO">${response_header} = application/json; charset=utf-8</msg>
+<status status="PASS" starttime="20230822 14:08:49.105" endtime="20230822 14:08:49.106"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response_header}</arg>
+<arg>application/json</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230822 14:08:49.106" endtime="20230822 14:08:49.106"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:49.105" endtime="20230822 14:08:49.106"/>
+</kw>
+<kw name="Response Body should contain name and job (${response})" sourcename="Response Body should contain name and job (${response})">
+<kw name="Convert To String" library="BuiltIn">
+<var>${response_body}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230822 14:08:49.108" level="INFO">${response_body} = {"name":"Izza","job":"Lead QA Automation","id":"64","createdAt":"2023-08-22T07:08:50.463Z"}</msg>
+<status status="PASS" starttime="20230822 14:08:49.107" endtime="20230822 14:08:49.108"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response_body}</arg>
+<arg>${user_name}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230822 14:08:49.108" endtime="20230822 14:08:49.109"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response_body}</arg>
+<arg>${user_job}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230822 14:08:49.109" endtime="20230822 14:08:49.109"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:49.106" endtime="20230822 14:08:49.109"/>
+</kw>
+<tag>smoke</tag>
+<status status="PASS" starttime="20230822 14:08:48.570" endtime="20230822 14:08:49.110"/>
+</test>
+<status status="PASS" starttime="20230822 14:08:48.024" endtime="20230822 14:08:49.110"/>
 </suite>
-<status status="PASS" starttime="20230818 12:43:20.378" endtime="20230818 12:43:20.885"/>
+<suite id="s1-s1-s3" name="Suite03 PutRequest" source="/Users/fatimazza/Belajar/QualityAssurance/RobotAPITest/step/Suite03_PutRequest.robot">
+<test id="s1-s1-s3-t1" name="TC 05: Register a User (PUT)" line="9">
+<kw name="Creating the session" library="resources">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${base_url}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230822 14:08:49.118" level="INFO">Creating Session using : alias=session, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230822 14:08:49.118" endtime="20230822 14:08:49.119"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:49.117" endtime="20230822 14:08:49.119"/>
+</kw>
+<kw name="Updating user job">
+<var>${response}</var>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${body}</var>
+<arg>job=${user_new_job}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230822 14:08:49.122" level="INFO">${body} = {'job': 'Lead Engineers'}</msg>
+<status status="PASS" starttime="20230822 14:08:49.121" endtime="20230822 14:08:49.122"/>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${header}</var>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20230822 14:08:49.123" level="INFO">${header} = {'Content-Type': 'application/json'}</msg>
+<status status="PASS" starttime="20230822 14:08:49.122" endtime="20230822 14:08:49.123"/>
+</kw>
+<kw name="PUT On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>session</arg>
+<arg>/users/${user_id}</arg>
+<arg>data=${body}</arg>
+<doc>Sends a PUT request on a previously created HTTP Session.</doc>
+<msg timestamp="20230822 14:08:49.590" level="INFO">PUT Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '18', 'Content-Type': 'application/x-www-form-urlencoded'} 
+ body=job=Lead+Engineers 
+ </msg>
+<msg timestamp="20230822 14:08:49.590" level="INFO">PUT Response : url=https://reqres.in/api/users/2 
+ status=200, reason=OK 
+ headers={'Date': 'Tue, 22 Aug 2023 07:08:51 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"3f-9Xn9Nq198wxbIIXZCB+GpvdIBWo"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=Jn4sxu9vWH14h4WON9JcIpme%2Fo8s8MQgWR0u7uIE8nSe8hrU%2B67GuHa7Vgyq2dZ5irzGXpCo2K%2BymHNrceX%2B1ZDxxzrlX80F29Dkd10YnQu5Z8FmsKNk69WTBw%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Vary': 'Accept-Encoding', 'Server': 'cloudflare', 'CF-RAY': '7fa9497108ae9fc2-SIN', 'Content-Encoding': 'gzip'} 
+ body={"job":"Lead Engineers","updatedAt":"2023-08-22T07:08:50.989Z"} 
+ </msg>
+<msg timestamp="20230822 14:08:49.590" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230822 14:08:49.124" endtime="20230822 14:08:49.590"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" starttime="20230822 14:08:49.590" endtime="20230822 14:08:49.591"/>
+</return>
+<msg timestamp="20230822 14:08:49.591" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230822 14:08:49.120" endtime="20230822 14:08:49.591"/>
+</kw>
+<kw name="Log all responses(${response})" library="resources" sourcename="Log all responses(${response})">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response Status: ${response.status_code} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:49.591" endtime="20230822 14:08:49.592"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response Body: ${response.content} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:49.593" endtime="20230822 14:08:49.593"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response Header: ${response.headers} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:49.593" endtime="20230822 14:08:49.594"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:49.591" endtime="20230822 14:08:49.594"/>
+</kw>
+<kw name="Status code should be 200 Success (${response})" library="resources" sourcename="Status code should be 200 Success (${response})">
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230822 14:08:49.595" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20230822 14:08:49.595" endtime="20230822 14:08:49.595"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>200</arg>
+<arg>${status_code}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230822 14:08:49.596" endtime="20230822 14:08:49.596"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:49.594" endtime="20230822 14:08:49.596"/>
+</kw>
+<kw name="Response Body should contain date and new job (${response})" sourcename="Response Body should contain date and new job (${response})">
+<kw name="Convert To String" library="BuiltIn">
+<var>${response_body}</var>
+<arg>${response.content}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230822 14:08:49.597" level="INFO">${response_body} = {"job":"Lead Engineers","updatedAt":"2023-08-22T07:08:50.989Z"}</msg>
+<status status="PASS" starttime="20230822 14:08:49.597" endtime="20230822 14:08:49.597"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${response_body}</arg>
+<arg>date</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230822 14:08:49.598" endtime="20230822 14:08:49.598"/>
+</kw>
+<kw name="Get Value From Json" library="JSONLibrary">
+<var>${job}</var>
+<arg>${response.json()}</arg>
+<arg>job</arg>
+<doc>Get Value From JSON using JSONPath</doc>
+<msg timestamp="20230822 14:08:49.628" level="INFO">${job} = ['Lead Engineers']</msg>
+<status status="PASS" starttime="20230822 14:08:49.598" endtime="20230822 14:08:49.628"/>
+</kw>
+<kw name="Should Contain" library="BuiltIn">
+<arg>${job}</arg>
+<arg>${user_new_job}</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" starttime="20230822 14:08:49.628" endtime="20230822 14:08:49.628"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:49.596" endtime="20230822 14:08:49.628"/>
+</kw>
+<tag>smoke</tag>
+<status status="PASS" starttime="20230822 14:08:49.116" endtime="20230822 14:08:49.629"/>
+</test>
+<status status="PASS" starttime="20230822 14:08:49.111" endtime="20230822 14:08:49.629"/>
+</suite>
+<suite id="s1-s1-s4" name="Suite04 DeleteRequest" source="/Users/fatimazza/Belajar/QualityAssurance/RobotAPITest/step/Suite04_DeleteRequest.robot">
+<test id="s1-s1-s4-t1" name="TC 06: Delete a User (DELETE)" line="9">
+<kw name="Creating the session" library="resources">
+<kw name="Create Session" library="RequestsLibrary">
+<arg>session</arg>
+<arg>${base_url}</arg>
+<arg>verify=true</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20230822 14:08:49.635" level="INFO">Creating Session using : alias=session, url=https://reqres.in/api, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20230822 14:08:49.635" endtime="20230822 14:08:49.636"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:49.634" endtime="20230822 14:08:49.636"/>
+</kw>
+<kw name="Deleting an user">
+<var>${response}</var>
+<kw name="DELETE On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>session</arg>
+<arg>/users/${user_id}</arg>
+<doc>Sends a DELETE request on a previously created HTTP Session.</doc>
+<msg timestamp="20230822 14:08:50.147" level="INFO">DELETE Request : url=https://reqres.in/api/users/2 
+ path_url=/api/users/2 
+ headers={'User-Agent': 'python-requests/2.28.2', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg timestamp="20230822 14:08:50.147" level="INFO">DELETE Response : url=https://reqres.in/api/users/2 
+ status=204, reason=No Content 
+ headers={'Date': 'Tue, 22 Aug 2023 07:08:51 GMT', 'Content-Length': '0', 'Connection': 'keep-alive', 'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Etag': 'W/"2-vyGp6PvFo4RvsFtPoIWeCReyIC8"', 'Via': '1.1 vegur', 'CF-Cache-Status': 'DYNAMIC', 'Report-To': '{"endpoints":[{"url":"https:\\/\\/a.nel.cloudflare.com\\/report\\/v3?s=aKJI7WQpku3jK3hDJKBeyWiRXRslEoJGBYCj59lD8qb%2FCakWugzSFqJV91hSfaezr3xETR2KiNAor7T3ZuDznTezy6Ia8buoE1exkbCAKGH%2BMF6ahfSpLLLzCA%3D%3D"}],"group":"cf-nel","max_age":604800}', 'NEL': '{"success_fraction":0,"report_to":"cf-nel","max_age":604800}', 'Server': 'cloudflare', 'CF-RAY': '7fa949742dd940f4-SIN'} 
+ body=None 
+ </msg>
+<msg timestamp="20230822 14:08:50.147" level="INFO">${response} = &lt;Response [204]&gt;</msg>
+<status status="PASS" starttime="20230822 14:08:49.636" endtime="20230822 14:08:50.147"/>
+</kw>
+<return>
+<value>${response}</value>
+<status status="PASS" starttime="20230822 14:08:50.147" endtime="20230822 14:08:50.147"/>
+</return>
+<msg timestamp="20230822 14:08:50.148" level="INFO">${response} = &lt;Response [204]&gt;</msg>
+<status status="PASS" starttime="20230822 14:08:49.636" endtime="20230822 14:08:50.148"/>
+</kw>
+<kw name="Log all responses(${response})" library="resources" sourcename="Log all responses(${response})">
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response Status: ${response.status_code} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:50.148" endtime="20230822 14:08:50.149"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response Body: ${response.content} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:50.149" endtime="20230822 14:08:50.150"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Response Header: ${response.headers} \n</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20230822 14:08:50.150" endtime="20230822 14:08:50.151"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:50.148" endtime="20230822 14:08:50.151"/>
+</kw>
+<kw name="Status code should be 204 No Content (${response})" library="resources" sourcename="Status code should be 204 No Content (${response})">
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20230822 14:08:50.153" level="INFO">${status_code} = 204</msg>
+<status status="PASS" starttime="20230822 14:08:50.152" endtime="20230822 14:08:50.153"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>204</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20230822 14:08:50.153" endtime="20230822 14:08:50.153"/>
+</kw>
+<status status="PASS" starttime="20230822 14:08:50.152" endtime="20230822 14:08:50.153"/>
+</kw>
+<tag>smoke</tag>
+<status status="PASS" starttime="20230822 14:08:49.634" endtime="20230822 14:08:50.153"/>
+</test>
+<status status="PASS" starttime="20230822 14:08:49.630" endtime="20230822 14:08:50.154"/>
+</suite>
+<status status="PASS" starttime="20230822 14:08:46.359" endtime="20230822 14:08:50.155"/>
+</suite>
+<status status="PASS" starttime="20230822 14:08:46.329" endtime="20230822 14:08:50.157"/>
 </suite>
 <statistics>
 <total>
-<stat pass="1" fail="0" skip="0">All Tests</stat>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="6" fail="0" skip="0">smoke</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="RobotAPITest">RobotAPITest</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1" name="Step">RobotAPITest.Step</stat>
-<stat pass="1" fail="0" skip="0" id="s1-s1-s1" name="TC01 GET request">RobotAPITest.Step.TC01 GET request</stat>
+<stat pass="6" fail="0" skip="0" id="s1" name="RobotAPITest">RobotAPITest</stat>
+<stat pass="6" fail="0" skip="0" id="s1-s1" name="Step">RobotAPITest.Step</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s1-s1" name="Suite01 GetRequest">RobotAPITest.Step.Suite01 GetRequest</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s1-s2" name="Suite02 PostRequest">RobotAPITest.Step.Suite02 PostRequest</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s3" name="Suite03 PutRequest">RobotAPITest.Step.Suite03 PutRequest</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1-s4" name="Suite04 DeleteRequest">RobotAPITest.Step.Suite04 DeleteRequest</stat>
 </suite>
 </statistics>
 <errors>
